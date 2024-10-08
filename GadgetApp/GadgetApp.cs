@@ -14,10 +14,10 @@ channel.ExchangeDeclare
 );
 
 // Declare and bind the queue for widgets
-var widgetQueue = "gadget";
+var gadgetQueue = "gadget";
 channel.QueueDeclare
 (
-  queue: widgetQueue, 
+  queue: gadgetQueue, 
   durable: false, 
   exclusive: false, 
   autoDelete: false, 
@@ -37,7 +37,7 @@ consumer.Received += (model, ea) =>
 
 channel.BasicConsume
 (
-  queue: widgetQueue, 
+  queue: gadgetQueue, 
   autoAck: true, 
   consumer: consumer
 );
