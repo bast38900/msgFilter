@@ -24,13 +24,6 @@ channel.QueueDeclare
   arguments: null
 );
 
-channel.QueueBind
-(
-  queue: widgetQueue, 
-  exchange: "orders", 
-  routingKey: "gadget"
-);
-
 Console.WriteLine("GadgetApp [*] Waiting for orders.");
 
 // Create a consumer for the widget queue
