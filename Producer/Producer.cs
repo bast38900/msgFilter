@@ -46,7 +46,7 @@ channel.QueueBind
 );
 
 // Create an example order
-var message = "Order for gadget:1, widget:12, stuff:43";
+var message = "gadget:1, widget:12, stuff:43";
 
 // Split the message and send relevant order to correct consumer
 var orderItem = message.Split(", ");
