@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System;
+using System.Text;
 using RabbitMQ.Client;
 
 var factory = new ConnectionFactory { HostName = "localhost" };
@@ -44,14 +45,20 @@ channel.QueueBind
   routingKey: "gadget"
 );
 
-// Create a example order for a widget
-var message = "Order for a gadget";
-var body = Encoding.UTF8.GetBytes(message);
+// Create an example order
+var message = "Order for gadget:1, widget:12, stuff:43";
 
-// Filter the message content and route it to the correct queue with the routing key
-var routingKey = message.Contains("widget") ? "widget" : "gadget";
-channel.BasicPublish(exchange: "orders", routingKey: routingKey, basicProperties: null, body: body);
+// Split the message and send relevant order to correct consumer
+var orderItem = message.Split(", ");
+foreach (var item in orderItem)
+{
+    var routingKey = item.Contains("widget") ? "widget" : item.Contains("gadget") ? "gadget" : null;
+    if (routingKey != null)
+    {
+        var body = Encoding.UTF8.GetBytes(item);
+        channel.BasicPublish(exchange: "orders", routingKey: routingKey, basicProperties: null, body: body);
+        Console.WriteLine($" [x] Sent '{item}' to '{routingKey}' queue");
+    }
+}
 
-Console.WriteLine($" [x] Sent '{message}'");
 Console.ReadLine();
-

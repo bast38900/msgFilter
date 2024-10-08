@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("WidgetApp")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0248936e4a3c6d3d8cb4b4bf600b10ce36c33279")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6ee7e7871929f1723da72a253f3316c09dc95c76")]
 [assembly: System.Reflection.AssemblyProductAttribute("WidgetApp")]
 [assembly: System.Reflection.AssemblyTitleAttribute("WidgetApp")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
